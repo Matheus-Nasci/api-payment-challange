@@ -1,7 +1,7 @@
 package com.api.apipaymentchallenge.interfaces;
 
-import com.api.apipaymentchallenge.dto.CarteiraDto;
+import com.api.apipaymentchallenge.dto.UsuarioCadastroDto;
 
 public interface UsuarioService {
-    CarteiraDto getSaldo();
+    void cadastrar(UsuarioCadastroDto usuarioCadastroDto);
 }
