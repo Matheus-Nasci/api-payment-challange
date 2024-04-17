@@ -1,15 +1,15 @@
 package com.api.apipaymentchallenge.controller;
 
 import com.api.apipaymentchallenge.dto.CarteiraDto;
+import com.api.apipaymentchallenge.dto.UsuarioCadastroDto;
 import com.api.apipaymentchallenge.service.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
     private final UsuarioServiceImpl _usuarioService;
@@ -19,8 +19,14 @@ public class UsuarioController {
         this._usuarioService = _usuarioService;
     }
 
+    @PostMapping("/cadastrar")
+    public ResponseEntity<Void> CadastrarUsuario(@RequestBody UsuarioCadastroDto usuarioCadastroDto) {
+        this._usuarioService.cadastrar(usuarioCadastroDto);
+        return ResponseEntity.created(null).build();
+    }
+
     @GetMapping("/consultar-saldo")
-        public ResponseEntity<CarteiraDto> GetSaldo() {
-        return ResponseEntity.ok(this._usuarioService.getSaldo());
+        public ResponseEntity<CarteiraDto> ConsultarSaldoCarteira() {
+        return null;
     }
 }
