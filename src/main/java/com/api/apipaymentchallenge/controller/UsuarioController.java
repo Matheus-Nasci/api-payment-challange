@@ -1,7 +1,6 @@
 package com.api.apipaymentchallenge.controller;
 
-import com.api.apipaymentchallenge.dto.CarteiraDto;
-import com.api.apipaymentchallenge.dto.UsuarioCadastroDto;
+import com.api.apipaymentchallenge.data.UsuarioCadastroData;
 import com.api.apipaymentchallenge.service.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +19,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Void> CadastrarUsuario(@RequestBody UsuarioCadastroDto usuarioCadastroDto) {
-        this._usuarioService.cadastrar(usuarioCadastroDto);
+    public ResponseEntity<Void> CadastrarUsuario(@RequestBody UsuarioCadastroData usuarioCadastroData) {
+        this._usuarioService.cadastrar(usuarioCadastroData);
         return ResponseEntity.created(null).build();
-    }
-
-    @GetMapping("/consultar-saldo")
-        public ResponseEntity<CarteiraDto> ConsultarSaldoCarteira() {
-        return null;
     }
 }
