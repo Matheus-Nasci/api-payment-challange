@@ -10,11 +10,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "usuario")
-@Table(name = "usuario")
+@Entity
 @DiscriminatorValue("usuario")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "tipoUsuario", discriminatorType = DiscriminatorType.STRING)
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +22,6 @@ public class Usuario {
     private String documento;
     private String email;
     private String senha;
+    @Column(insertable=false, updatable=false)
+    private String tipoUsuario;
 }
